@@ -96,3 +96,16 @@ int q_merge(struct list_head *head)
     // https://leetcode.com/problems/merge-k-sorted-lists/
     return 0;
 }
+/* Return the size of the queue. */
+int q_size(struct list_head *head)
+{
+    if (!head)
+        return 0;
+
+    int len = 0;
+    struct list_head *li;
+
+    list_for_each (li, head)
+        len++;
+    return len;
+}
