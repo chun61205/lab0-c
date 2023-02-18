@@ -20,19 +20,20 @@ struct list_head *q_new()
     INIT_LIST_HEAD(head);
     return head;
 }
+/*Creat a new entry with value s*/
 element_t *q_new_entry(char *s)
 {
     element_t *entry = malloc(sizeof(element_t));
     if (!entry)
         return NULL;
-    size_t s_len = strlen(s) + 1;
-    entry->value = malloc(s_len);
+    size_t s_len = strlen(s);
+    entry->value = malloc(s_len + 1);
     if (!(entry->value)) {
         free(entry);
         return NULL;
     }
-    strncpy(entry->value, s, s_len - 1);
-    entry->value = '\0';
+    strncpy(entry->value, s, s_len);
+    entry->value[s_len] = '\0';
     return entry;
 }
 
